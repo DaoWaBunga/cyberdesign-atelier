@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import { Brain, Code, Bot, Globe, Shield, Chart, Cpu, MessageSquare, Zap, Database } from 'lucide-react';
+import { Brain, Code, Bot, Globe, Shield, BarChart, Cpu, MessageSquare, Zap, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ const services = [
     description: "Advanced security systems powered by machine learning"
   },
   {
-    icon: <Chart className="w-12 h-12 text-primary" />,
+    icon: <BarChart className="w-12 h-12 text-primary" />,
     title: "AI Analytics",
     description: "Deep insights through AI-powered data analysis"
   },
