@@ -29,7 +29,7 @@ const Hero = () => {
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg group w-full md:w-auto"
             >
               <Link to="/get-started">
-                Get Started
+                Request Free Quote
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
@@ -47,11 +47,14 @@ const Hero = () => {
           <div className="flex justify-center">
             <Button
               variant="ghost"
+              asChild
               className="text-primary hover:text-primary/90 group"
             >
-              <FileSearch className="mr-2 w-5 h-5" />
-              Request a Free Report on your current site
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link to="/contact">
+                <FileSearch className="mr-2 w-5 h-5" />
+                Free Report or consultation on your current site or ideas on a new one
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>
