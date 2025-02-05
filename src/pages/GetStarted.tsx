@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
-import { Select } from '@/components/ui/select';
 
 type QuoteFormData = {
   name: string;
@@ -21,7 +20,6 @@ const GetStarted = () => {
 
   const onSubmit = async (data: QuoteFormData) => {
     try {
-      // Here you would typically integrate with your email service
       toast({
         title: "Quote Request Sent!",
         description: "We'll get back to you with a detailed proposal soon.",
@@ -37,12 +35,12 @@ const GetStarted = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-cyber-dark mb-6">Get Started</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Request a free consultation and quote for your project
           </p>
         </div>
@@ -53,10 +51,10 @@ const GetStarted = () => {
               <Input
                 placeholder="Your Name"
                 {...register("name", { required: "Name is required" })}
-                className={errors.name ? "border-red-500" : ""}
+                className={errors.name ? "border-destructive" : ""}
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
               )}
             </div>
 
@@ -71,10 +69,10 @@ const GetStarted = () => {
                     message: "Invalid email address"
                   }
                 })}
-                className={errors.email ? "border-red-500" : ""}
+                className={errors.email ? "border-destructive" : ""}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
               )}
             </div>
           </div>
@@ -89,7 +87,7 @@ const GetStarted = () => {
           <div>
             <select
               {...register("service", { required: "Please select a service" })}
-              className="w-full rounded-md border border-input bg-background px-3 py-2"
+              className="w-full rounded-md border border-input bg-background text-foreground px-3 py-2"
             >
               <option value="">Select a Service</option>
               <option value="ai-strategy">AI Strategy Consulting</option>
@@ -104,14 +102,14 @@ const GetStarted = () => {
               <option value="data">AI Data Management</option>
             </select>
             {errors.service && (
-              <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>
+              <p className="text-destructive text-sm mt-1">{errors.service.message}</p>
             )}
           </div>
 
           <div>
             <select
               {...register("budget")}
-              className="w-full rounded-md border border-input bg-background px-3 py-2"
+              className="w-full rounded-md border border-input bg-background text-foreground px-3 py-2"
             >
               <option value="">Expected Budget Range</option>
               <option value="5k-10k">$5,000 - $10,000</option>
@@ -125,11 +123,11 @@ const GetStarted = () => {
             <Textarea
               placeholder="Tell us about your project"
               {...register("message", { required: "Please describe your project" })}
-              className={errors.message ? "border-red-500" : ""}
+              className={errors.message ? "border-destructive" : ""}
               rows={6}
             />
             {errors.message && (
-              <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+              <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
             )}
           </div>
 

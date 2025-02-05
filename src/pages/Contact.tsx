@@ -19,8 +19,6 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // Here you would typically integrate with your email service
-      // For now, we'll just show a success toast
       toast({
         title: "Message Sent!",
         description: "We'll get back to you as soon as possible.",
@@ -36,12 +34,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-cyber-dark mb-6">Contact Us</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Get in touch with our team to discuss your project
           </p>
         </div>
@@ -51,22 +49,22 @@ const Contact = () => {
             <div className="flex items-start space-x-4">
               <Mail className="w-6 h-6 text-primary mt-1" />
               <div>
-                <h3 className="font-semibold text-cyber-dark">Email</h3>
-                <p className="text-gray-600">cybersidestudio@gmail.com</p>
+                <h3 className="font-semibold">Email</h3>
+                <p className="text-muted-foreground">cybersidestudio@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
               <Phone className="w-6 h-6 text-primary mt-1" />
               <div>
-                <h3 className="font-semibold text-cyber-dark">Phone</h3>
-                <p className="text-gray-600">+1 (555) 123-4567</p>
+                <h3 className="font-semibold">Phone</h3>
+                <p className="text-muted-foreground">+1 (555) 123-4567</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
               <MapPin className="w-6 h-6 text-primary mt-1" />
               <div>
-                <h3 className="font-semibold text-cyber-dark">Location</h3>
-                <p className="text-gray-600">San Francisco, CA</p>
+                <h3 className="font-semibold">Location</h3>
+                <p className="text-muted-foreground">San Francisco, CA</p>
               </div>
             </div>
           </div>
@@ -76,10 +74,10 @@ const Contact = () => {
               <Input
                 placeholder="Your Name"
                 {...register("name", { required: "Name is required" })}
-                className={errors.name ? "border-red-500" : ""}
+                className={errors.name ? "border-destructive" : ""}
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
               )}
             </div>
 
@@ -94,10 +92,10 @@ const Contact = () => {
                     message: "Invalid email address"
                   }
                 })}
-                className={errors.email ? "border-red-500" : ""}
+                className={errors.email ? "border-destructive" : ""}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
               )}
             </div>
 
@@ -105,10 +103,10 @@ const Contact = () => {
               <Input
                 placeholder="Subject"
                 {...register("subject", { required: "Subject is required" })}
-                className={errors.subject ? "border-red-500" : ""}
+                className={errors.subject ? "border-destructive" : ""}
               />
               {errors.subject && (
-                <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.subject.message}</p>
               )}
             </div>
 
@@ -116,11 +114,11 @@ const Contact = () => {
               <Textarea
                 placeholder="Your Message"
                 {...register("message", { required: "Message is required" })}
-                className={errors.message ? "border-red-500" : ""}
+                className={errors.message ? "border-destructive" : ""}
                 rows={6}
               />
               {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
               )}
             </div>
 

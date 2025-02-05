@@ -4,7 +4,7 @@ import Hero from '@/components/Hero';
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
     </main>
