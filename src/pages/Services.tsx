@@ -59,12 +59,12 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-cyber-dark mb-6">Our Services</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Our Services</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Discover our comprehensive range of AI-powered solutions designed to transform your business
           </p>
         </div>
@@ -73,15 +73,15 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group animate-fade-up"
+              className="bg-card p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group animate-fade-up border border-border"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-cyber-dark">{service.title}</h3>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              <Button asChild className="mt-auto">
+              <h3 className="text-xl font-semibold mb-4 text-card-foreground">{service.title}</h3>
+              <p className="text-muted-foreground mb-6">{service.description}</p>
+              <Button asChild variant="default" className="mt-auto">
                 <Link to="/get-started">Get Started</Link>
               </Button>
             </div>
