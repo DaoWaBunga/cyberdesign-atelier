@@ -41,7 +41,7 @@ const GetStarted = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Request a free consultation and quote for your project
+            Request a free consultation or quote for your project
           </p>
         </div>
 
@@ -91,15 +91,15 @@ const GetStarted = () => {
             >
               <option value="">Select a Service</option>
               <option value="ai-strategy">AI Strategy Consulting</option>
-              <option value="web-development">AI-Powered Web Development</option>
+              <option value="web-development">Web Development</option>
               <option value="chatbots">Custom AI Chatbots</option>
-              <option value="seo">AI SEO Optimization</option>
-              <option value="security">AI Security Solutions</option>
+              <option value="seo">SEO Optimization</option>
+              <option value="security">Website Maintenence</option>
               <option value="analytics">AI Analytics</option>
               <option value="ml">Machine Learning Integration</option>
               <option value="content">AI Content Generation</option>
               <option value="automation">Process Automation</option>
-              <option value="data">AI Data Management</option>
+              <option value="data">Custom Apps</option>
             </select>
             {errors.service && (
               <p className="text-destructive text-sm mt-1">{errors.service.message}</p>

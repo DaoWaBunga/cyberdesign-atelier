@@ -40,7 +40,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Get in touch with our team to discuss your project
+            Get in touch with our team to discuss your project to get started!
           </p>
         </div>
 
@@ -57,14 +57,14 @@ const Contact = () => {
               <Phone className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Phone</h3>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                <p className="text-muted-foreground">+1 (403) 483-8918</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
               <MapPin className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Location</h3>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Calgary,AB CANADA</p>
               </div>
             </div>
           </div>

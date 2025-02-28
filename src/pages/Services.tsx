@@ -12,8 +12,8 @@ const services = [
   },
   {
     icon: <Code className="w-12 h-12 text-primary" />,
-    title: "AI-Powered Web Development",
-    description: "Modern websites with integrated AI features and automation"
+    title: "Web Development",
+    description: "Modern websites using REACT, Wordpress and other leading tools,with integrated AI features and automation available"
   },
   {
     icon: <Bot className="w-12 h-12 text-primary" />,
@@ -22,13 +22,13 @@ const services = [
   },
   {
     icon: <Globe className="w-12 h-12 text-primary" />,
-    title: "AI SEO Optimization",
-    description: "Smart SEO strategies using AI-driven insights"
+    title: "SEO Optimization",
+    description: "Smart SEO strategies using current market-driven insights"
   },
   {
     icon: <Shield className="w-12 h-12 text-primary" />,
-    title: "AI Security Solutions",
-    description: "Advanced security systems powered by machine learning"
+    title: "Website Maintenence",
+    description: "Have a current site? We can maintain and update optimize site speeds."
   },
   {
     icon: <BarChart className="w-12 h-12 text-primary" />,
@@ -38,7 +38,7 @@ const services = [
   {
     icon: <Cpu className="w-12 h-12 text-primary" />,
     title: "Machine Learning Integration",
-    description: "Custom ML models for your specific use cases"
+    description: "Custom ML/LLM models for your specific use cases.  Token Cost would be 15% on top of our reatil bundle prices.if  Claude 3.7 or GTP 4.5 would be 90%."
   },
   {
     icon: <MessageSquare className="w-12 h-12 text-primary" />,
@@ -52,8 +52,8 @@ const services = [
   },
   {
     icon: <Database className="w-12 h-12 text-primary" />,
-    title: "AI Data Management",
-    description: "Intelligent data processing and organization"
+    title: "Custom Apps",
+    description: "Mobile & web apps, whitelable, SaaS, Funnels, custom CMS"
   }
 ];
 
@@ -65,7 +65,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Our Services</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover our comprehensive range of AI-powered solutions designed to transform your business
+            Discover our comprehensive range solutions designed to transform your business and stay up to date.
           </p>
         </div>
 

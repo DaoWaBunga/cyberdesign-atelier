@@ -4,19 +4,19 @@ import { CheckCircle } from 'lucide-react';
 
 const projects = [
   {
-    title: "AI-Powered E-commerce Platform",
+    title: "E-commerce Platform",
     client: "TechStyle Retail",
     description: "Implemented personalized product recommendations and automated customer service, resulting in a 40% increase in sales.",
   },
   {
-    title: "Smart Content Management System",
-    client: "Global Media Corp",
-    description: "Developed an AI-driven CMS that automates content creation and optimization, reducing production time by 60%.",
+    title: "Web Site for Non-Profit",
+    client: "svgassncalg",
+    description: "Developed Wordpress Site for Non-Profit st vincent and the grenadines club.",
   },
   {
-    title: "Intelligent Customer Service Platform",
-    client: "ServicePro Solutions",
-    description: "Created an advanced chatbot system handling 80% of customer inquiries automatically.",
+    title: "Maintenence of pro sites",
+    client: "Multiple",
+    description: "We currently manage sites for clients with a wide range of needs and technical variaty.",
   }
 ];
 
@@ -28,7 +28,7 @@ const About = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Pioneering the future of web development with artificial intelligence
+            Pioneering the future of web development with human & artificial intelligence
           </p>
         </div>
 
@@ -36,13 +36,13 @@ const About = () => {
           <div className="animate-fade-up">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <p className="text-muted-foreground mb-6">
-              Founded in 2022, CyberSideStudio emerged from a vision to revolutionize web development
-              through the power of artificial intelligence. Our team of experts combines decades of
-              experience in web development with cutting-edge AI technology.
+              Founded in 2020, CyberSideStudio emerged from a vision to revolutionize web development
+              through the power of Low cost human & artificial intelligence. Our team of experts combines decades of
+              experience in web & app development with cutting-edge AI technology now part of the toolbelt.
             </p>
             <p className="text-muted-foreground">
-              We've successfully delivered over 100 projects, helping businesses transform their
-              digital presence and achieve unprecedented growth through AI-powered solutions.
+              We've successfully delivered over 15 projects, helping businesses transform their
+              digital presence and achieve unprecedented growth through our teams vision and dedication to understand our clients needs.
             </p>
           </div>
           <div className="animate-fade-up delay-100">
