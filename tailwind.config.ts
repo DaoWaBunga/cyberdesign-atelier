@@ -67,6 +67,16 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "fade-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
         "gradient-y": {
           "0%, 100%": {
             "background-size": "400% 400%",
@@ -80,6 +90,7 @@ export default {
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
+        "fade-down": "fade-down 0.3s ease-out",
         "gradient-y": "gradient-y 15s ease infinite",
       },
     },
