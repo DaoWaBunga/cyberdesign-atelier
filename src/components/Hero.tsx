@@ -12,15 +12,15 @@ const Hero = () => {
         <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
           <div className="flex items-center justify-center space-x-2 mb-6">
             <BrainCircuit className="w-8 h-8 text-primary" />
-            <span className="text-lg font-medium text-muted-foreground">AI-Powered Solutions</span>
+            <span className="text-lg font-medium text-muted-foreground">Human & AI-Powered Solutions</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Building the Future<br />with AI Technology
+            Building the Future<br />while Providing our Clients with Results
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform your digital presence with cutting-edge AI solutions. We bring innovation to life through advanced technology and creative design.
+            Transform your old out dated digital presence with cutting-edge AI solutions. We bring innovation to life through advanced technology and creative design.
           </p>
 
           <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:justify-center mb-8">
@@ -52,7 +52,7 @@ const Hero = () => {
             >
               <Link to="/contact">
                 <FileSearch className="mr-2 w-5 h-5" />
-                Free Report or consultation on your current site or ideas on a new one
+                Free Quote or consultation on your current site or ideas on a new one!
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>

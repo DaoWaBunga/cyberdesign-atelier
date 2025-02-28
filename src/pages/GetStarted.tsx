@@ -39,7 +39,7 @@ const GetStarted = () => {
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact the SyberSide Team Today!</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Request a free consultation or quote for your project
           </p>
@@ -112,10 +112,10 @@ const GetStarted = () => {
               className="w-full rounded-md border border-input bg-background text-foreground px-3 py-2"
             >
               <option value="">Expected Budget Range</option>
-              <option value="5k-10k">$5,000 - $10,000</option>
-              <option value="10k-25k">$10,000 - $25,000</option>
-              <option value="25k-50k">$25,000 - $50,000</option>
-              <option value="50k+">$50,000+</option>
+              <option value="5k-10k">$995 - $2,000</option>
+              <option value="10k-25k">$2100 - $5,000</option>
+              <option value="25k-50k">$5100 - $20,000</option>
+              <option value="50k+">$20,000+</option>
             </select>
           </div>
 
