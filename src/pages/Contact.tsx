@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 type ContactFormData = {
   name: string;
@@ -15,16 +16,47 @@ type ContactFormData = {
 };
 
 const Contact = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>();
+  const formRef = useRef<HTMLFormElement>(null);
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormData>();
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("QuCJbf1yop9f3LSZC");
+  }, []);
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      toast({
-        title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      reset();
+      // EmailJS configuration
+      const serviceId = 'service_5hetx19';
+      
+      console.log("Sending email with data:", data);
+      
+      // Send the email using EmailJS send method instead of sendForm
+      const result = await emailjs.send(
+        serviceId,
+        "template_uvoq4cm", // Updated to the correct template ID
+        {
+          from_name: data.name,
+          to_name: "CyberSide Studio",
+          message: `Subject: ${data.subject}\n\n${data.message}`,
+          reply_to: data.email
+        },
+        "QuCJbf1yop9f3LSZC"
+      );
+      
+      console.log("EmailJS result:", result);
+      
+      if (result.text === 'OK') {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        reset();
+      } else {
+        throw new Error(`Failed to send email: ${result.text}`);
+      }
     } catch (error) {
+      console.error('Error sending email:', error);
       toast({
         title: "Error",
         description: "There was a problem sending your message. Please try again.",
@@ -69,12 +101,13 @@ const Contact = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <Input
                 placeholder="Your Name"
                 {...register("name", { required: "Name is required" })}
                 className={errors.name ? "border-destructive" : ""}
+                name="name"
               />
               {errors.name && (
                 <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
@@ -93,6 +126,7 @@ const Contact = () => {
                   }
                 })}
                 className={errors.email ? "border-destructive" : ""}
+                name="email"
               />
               {errors.email && (
                 <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
@@ -104,6 +138,7 @@ const Contact = () => {
                 placeholder="Subject"
                 {...register("subject", { required: "Subject is required" })}
                 className={errors.subject ? "border-destructive" : ""}
+                name="subject"
               />
               {errors.subject && (
                 <p className="text-destructive text-sm mt-1">{errors.subject.message}</p>
@@ -116,14 +151,15 @@ const Contact = () => {
                 {...register("message", { required: "Message is required" })}
                 className={errors.message ? "border-destructive" : ""}
                 rows={6}
+                name="message"
               />
               {errors.message && (
                 <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
               )}
             </div>
 
-            <Button type="submit" className="w-full">
-              Send Message
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
+import emailjs from '@emailjs/browser';
 
 type QuoteFormData = {
   name: string;
@@ -16,16 +17,56 @@ type QuoteFormData = {
 };
 
 const GetStarted = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<QuoteFormData>();
+  const formRef = useRef<HTMLFormElement>(null);
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<QuoteFormData>();
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("QuCJbf1yop9f3LSZC");
+  }, []);
 
   const onSubmit = async (data: QuoteFormData) => {
     try {
-      toast({
-        title: "Quote Request Sent!",
-        description: "We'll get back to you with a detailed proposal soon.",
-      });
-      reset();
+      // EmailJS configuration
+      const serviceId = 'service_5hetx19';
+      
+      console.log("Sending quote request with data:", data);
+      
+      // Send the email using EmailJS send method instead of sendForm
+      const result = await emailjs.send(
+        serviceId,
+        "template_uvoq4cm", // Updated to the correct template ID
+        {
+          from_name: data.name,
+          to_name: "CyberSide Studio",
+          message: `Subject: Quote Request
+
+Project Details:
+${data.message}
+
+Company: ${data.company || 'Not specified'}
+Service: ${data.service || 'Not specified'}
+Budget: ${data.budget || 'Not specified'}
+
+Contact Email: ${data.email}`,
+          reply_to: data.email
+        },
+        "QuCJbf1yop9f3LSZC"
+      );
+      
+      console.log("EmailJS result:", result);
+      
+      if (result.text === 'OK') {
+        toast({
+          title: "Quote Request Sent!",
+          description: "We'll get back to you with a detailed proposal soon.",
+        });
+        reset();
+      } else {
+        throw new Error(`Failed to send quote request: ${result.text}`);
+      }
     } catch (error) {
+      console.error('Error sending quote request:', error);
       toast({
         title: "Error",
         description: "There was a problem sending your request. Please try again.",
@@ -45,13 +86,14 @@ const GetStarted = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="max-w-2xl mx-auto space-y-6">
+        <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="max-w-2xl mx-auto space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <Input
                 placeholder="Your Name"
                 {...register("name", { required: "Name is required" })}
                 className={errors.name ? "border-destructive" : ""}
+                name="name"
               />
               {errors.name && (
                 <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
@@ -70,6 +112,7 @@ const GetStarted = () => {
                   }
                 })}
                 className={errors.email ? "border-destructive" : ""}
+                name="email"
               />
               {errors.email && (
                 <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
@@ -81,6 +124,7 @@ const GetStarted = () => {
             <Input
               placeholder="Company Name"
               {...register("company")}
+              name="company"
             />
           </div>
 
@@ -88,6 +132,7 @@ const GetStarted = () => {
             <select
               {...register("service", { required: "Please select a service" })}
               className="w-full rounded-md border border-input bg-background text-foreground px-3 py-2"
+              name="service"
             >
               <option value="">Select a Service</option>
               <option value="ai-strategy">AI Strategy Consulting</option>
@@ -110,12 +155,13 @@ const GetStarted = () => {
             <select
               {...register("budget")}
               className="w-full rounded-md border border-input bg-background text-foreground px-3 py-2"
+              name="budget"
             >
               <option value="">Expected Budget Range</option>
-              <option value="5k-10k">$995 - $2,000</option>
-              <option value="10k-25k">$2100 - $5,000</option>
-              <option value="25k-50k">$5100 - $20,000</option>
-              <option value="50k+">$20,000+</option>
+              <option value="$995 - $2,000">$995 - $2,000</option>
+              <option value="$2100 - $5,000">$2100 - $5,000</option>
+              <option value="$5100 - $20,000">$5100 - $20,000</option>
+              <option value="$20,000+">$20,000+</option>
             </select>
           </div>
 
@@ -125,14 +171,15 @@ const GetStarted = () => {
               {...register("message", { required: "Please describe your project" })}
               className={errors.message ? "border-destructive" : ""}
               rows={6}
+              name="message"
             />
             {errors.message && (
               <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
             )}
           </div>
 
-          <Button type="submit" className="w-full">
-            Request Quote
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Request Quote"}
           </Button>
         </form>
       </div>
